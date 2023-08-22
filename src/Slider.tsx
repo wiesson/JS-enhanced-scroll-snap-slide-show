@@ -1,28 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./Slider.css";
 import { clsx } from "clsx";
-
-function* chunks(arr: string[], n: number) {
-  for (let i = 0; i < arr.length; i += n) {
-    yield arr.slice(i, i + n);
-  }
-}
 
 type SliderProps = {
   perView?: number;
   grouped?: boolean;
   data: string[];
+  heightClass?: string;
 };
 
-export default function Slider({ perView = 1, data = [] }: SliderProps) {
+export default function Slider({
+  perView = 1,
+  data = [],
+  heightClass = "h-96",
+}: SliderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [clientWidth, setClientWidth] = useState(375);
-
-  useEffect(() => {
-    setClientWidth(containerRef.current?.clientWidth || 375);
-  }, []);
-
   const controlsVisible = data.length > perView;
 
   function onPrevSlide() {
@@ -85,7 +78,7 @@ export default function Slider({ perView = 1, data = [] }: SliderProps) {
               <div
                 key={src}
                 data-index={index}
-                className={clsx("slide px-2", {
+                className={clsx("slide px-2", heightClass, {
                   "w-full": perView === 1,
                   "lg:w-1/2": perView === 2,
                   "w-64 md:w-1/3": perView === 3,
@@ -98,7 +91,7 @@ export default function Slider({ perView = 1, data = [] }: SliderProps) {
                 <img
                   alt=""
                   className="h-full w-full object-cover rounded-lg"
-                  src={src + "=w800-h400-c"}
+                  src={`${src}=w800-h400-c`}
                 />
               </div>
             );
@@ -206,30 +199,38 @@ function SliderControlsNext({ handleSlideChange }: SliderControlsProps) {
   );
 }
 
-/*{false &&
-            slides.map((chunk, index) => {
-              return (
-                <div
-                  key={index}
-                  data-index={index}
-                  className={clsx("slide w-full grid", {
-                    "grid-cols-1": perView === 1,
-                    "grid-cols-2": perView === 2,
-                    "grid-cols-3": perView === 3,
-                    "grid-cols-4": perView === 4,
-                    "grid-cols-5": perView === 5,
-                    "gap-4": perView > 1,
-                  })}
-                >
-                  {chunk.map((src) => (
-                    <div key={src}>
-                      <img
-                        alt=""
-                        className="h-full w-full object-cover rounded-lg"
-                        src={src + "=w800-h400-c"}
-                      />
-                    </div>
-                  ))}
-                </div>
-              );
-            })} */
+/*
+Attempt for slides per view
+
+function* chunks(arr: string[], n: number) {
+  for (let i = 0; i < arr.length; i += n) {
+    yield arr.slice(i, i + n);
+  }
+}
+
+{slides.map((chunk, index) => {
+  return (
+    <div
+      key={index}
+      data-index={index}
+      className={clsx("slide w-full grid", {
+        "grid-cols-1": perView === 1,
+        "grid-cols-2": perView === 2,
+        "grid-cols-3": perView === 3,
+        "grid-cols-4": perView === 4,
+        "grid-cols-5": perView === 5,
+        "gap-4": perView > 1,
+      })}
+    >
+      {chunk.map((src) => (
+        <div key={src}>
+          <img
+            alt=""
+            className="h-full w-full object-cover rounded-lg"
+            src={src + "=w800-h400-c"}
+          />
+        </div>
+      ))}
+    </div>
+  );
+})} */

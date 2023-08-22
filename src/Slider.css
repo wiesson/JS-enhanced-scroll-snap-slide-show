@@ -12,7 +12,6 @@
 
 .slide {
   flex: none;
-  height: 364px;
   scroll-snap-align: start;
   flex-shrink: 0;
 }

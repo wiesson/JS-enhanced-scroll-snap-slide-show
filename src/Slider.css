@@ -1,0 +1,16 @@
+.slider {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: none;
+  height: 364px;
+  scroll-snap-align: start;
+}

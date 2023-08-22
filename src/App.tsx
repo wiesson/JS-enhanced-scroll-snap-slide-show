@@ -26,37 +26,40 @@ const data = [
 
 function App() {
   return (
-    <div className="max-w-7xl mx-auto p-4 space-y-4 py-16">
-      <h1 className="text-center">JS Enhanced Carousel (POC)</h1>
-      <p className="text-center prose">
-        The carousel uses CSS overflow-x scroll and scroll snap. Some Javascript
-        is added to add additional functionality for mainly Desktop (bullets,
-        arrow navigation)
-      </p>
+    <div className="max-w-7xl mx-auto p-4 space-y-24 py-24">
+      <div className="space-y-4">
+        <h1 className="text-4xl">JS Enhanced Carousel</h1>
+        <p className="prose prose-sm">
+          The carousel uses CSS overflow-x and scroll snap for the main
+          functionality. The goal is to have the same markup on mobile as on
+          desktop. Javascript is (in theory) only required (CSR) to add
+          additional desktop features such as arrow or bullet navigation.
+        </p>
+      </div>
 
       <div className="space-y-24">
         <div className="space-y-4">
-          <h2 className="text-2xl text-center">Single slide</h2>
+          <h2 className="text-xl">Single slide</h2>
           <Slider data={data} heightClass="h-1/2" />
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-2xl text-center">2 Slides</h2>
+          <h2 className="text-xl">2 Slides</h2>
           <Slider perView={2} data={data} />
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-2xl text-center">3 Slides (Exact)</h2>
+          <h2 className="text-xl">3 Slides (Exact)</h2>
           <Slider perView={3} data={data.slice(0, 3)} />
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-2xl text-center">4 Slides</h2>
+          <h2 className="text-xl">4 Slides</h2>
           <Slider perView={4} data={data} />
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-2xl text-center">5 Slides (8 total)</h2>
+          <h2 className="text-xl">5 Slides (8 total)</h2>
           <Slider perView={5} data={data.slice(0, 8)} />
         </div>
       </div>

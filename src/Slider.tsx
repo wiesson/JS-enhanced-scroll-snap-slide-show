@@ -137,9 +137,10 @@ function SliderDots({
           <button
             key={i}
             onClick={() => handleSlideChange(i, true)}
-            className={`w-2 h-2 rounded-full hover:bg-yellow-400 ${
-              activeIndex === i ? "bg-yellow-400" : "bg-gray-300"
-            }`}
+            className={clsx("w-2 h-2 rounded-full border", {
+              "bg-yellow-400 border-yellow-400": activeIndex === i,
+              "border-gray-300 hover:bg-yellow-400": activeIndex !== i,
+            })}
           >
             <span className="sr-only">Go to slide {activeIndex}</span>
           </button>

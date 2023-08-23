@@ -39,8 +39,8 @@ function App() {
 
       <div className="space-y-24">
         <div className="space-y-4">
-          <h2 className="text-xl">Single slide</h2>
-          <Slider data={data} heightClass="h-1/2" />
+          <h2 className="text-xl">Single slide (5 total)</h2>
+          <Slider data={data.slice(0, 5)} heightClass="h-96 md:h-2/3" />
         </div>
 
         <div className="space-y-4">
@@ -54,7 +54,7 @@ function App() {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-xl">4 Slides</h2>
+          <h2 className="text-xl">4 Slides, {data.length} total</h2>
           <Slider perView={4} data={data} />
         </div>
 

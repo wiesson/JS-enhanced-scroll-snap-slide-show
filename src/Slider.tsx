@@ -80,11 +80,11 @@ export default function Slider({
                 data-index={index}
                 className={clsx("slide px-2", heightClass, {
                   "w-full": perView === 1,
-                  "lg:w-1/2": perView === 2,
-                  "w-64 md:w-1/3": perView === 3,
-                  "w-64 lg:w-1/4": perView === 4,
-                  "w-64 lg:w-1/5": perView === 5,
-                  "w-64 lg:w-1/6": perView === 6,
+                  "w-80 lg:w-1/2": perView === 2,
+                  "w-72 md:w-1/3": perView === 3,
+                  "w-72 lg:w-1/4": perView === 4,
+                  "w-72 lg:w-1/5": perView === 5,
+                  "w-72 lg:w-1/6": perView === 6,
                   // "pr-4": perView > 1,
                 })}
               >
